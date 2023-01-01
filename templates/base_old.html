@@ -1,0 +1,72 @@
+{{user.username}}
+<br>
+<a href="/logout/">Logout</a>
+
+<br>
+
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div>
+        {% for p in post %}
+            <a href="comment/{{p.id}}">
+                <h3>
+                    {{p.id}}
+                </h3>
+            </a>
+            <br>
+            <input type="text" value="{{p.host}}">
+            <br>
+            <img src="{{p.image.url}}" style="width:100px;height:100px" >
+            <br>
+            <textarea name="" id="" cols="5" rows="5">
+                {{p.description}}
+            </textarea>
+            <br>
+            <p>{{p.body}}</p>
+            
+           
+            
+        {% endfor %}
+        <div>
+            
+        {% for c in comment %}
+           
+            <h4>
+                {{c.user.username}}
+            </h4>
+            <p>
+                {{c.body}}
+            </p>
+        {% endfor %}
+        </div>
+        
+    </div> 
+    
+    
+</form>
+
+
+<hr>
+
+{% for msg in messages%}
+
+        <table>
+            <tr>
+                <th>
+                    <label for="">
+                        <a href="/messages/{{msg.id}}">
+                        {{msg.sender}}
+                        </a>
+                    </label>
+                </th>
+                <th>
+                    <input type="text" value="{{msg.body}}">
+                </th>
+            </tr>
+        </table>
+    {% endfor %}
+
+    <hr>
+

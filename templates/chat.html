@@ -1,0 +1,28 @@
+
+<h1>Chat</h1>
+<form action="" method="post">
+    {% csrf_token %}
+
+
+    {{form.as_p}}
+    
+
+    <input type="submit" value="Submit">
+</form>
+
+<hr>
+{% for msg in messages%}
+
+        <table>
+            <tr>
+                <th>
+                    <label for="">
+                        {{msg.sender}}
+                    </label>
+                </th>
+                <th>
+                    <input type="text" value="{{msg.body}}">
+                </th>
+            </tr>
+        </table>
+    {% endfor %}
